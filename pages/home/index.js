@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import { AppLayout } from 'components/AppLayout';
-import Twit from 'components/Twit';
+import Twitcooff from 'components/Twittcoff';
 
 import styles from 'styles/HomePage.module.css';
 
@@ -24,7 +24,7 @@ const HomePage = () => {
 				</header>
 				<section className={styles.section}>
 					{timeline.map(({ id, username, avatar, message }) => (
-						<Twit
+						<Twitcooff
 							key={id}
 							username={username}
 							avatar={avatar}

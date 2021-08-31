@@ -1,5 +1,5 @@
 import { Avatar } from 'components/Avatar';
-const Twit = ({ id, avatar, username, message }) => {
+const Twittcoff = ({ id, avatar, username, message }) => {
 	// console.log(id);
 	return (
 		<>
@@ -14,7 +14,7 @@ const Twit = ({ id, avatar, username, message }) => {
 			</article>
 			<style jsx>{`
 				article {
-					border-bottom: 2px solid #eaf7ff;
+					border-bottom: 2px solid #eee;
 					display: flex;
 					padding: 10px 15px;
 				}
@@ -30,4 +30,4 @@ const Twit = ({ id, avatar, username, message }) => {
 	);
 };
 
-export default Twit;
+export default Twittcoff;

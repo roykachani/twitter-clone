@@ -8,30 +8,28 @@ import { Avatar } from 'components/Avatar';
 import { Button } from 'components/Button';
 import { GitHub } from 'components/Icons/GitHub';
 import { colors } from 'styles/theme';
+import { useRouter } from 'next/router';
 
 const Home = () => {
 	const [user, setUser] = useState(undefined);
+	const router = useRouter();
 
 	useEffect(() => {
 		onAuthStateChanged(setUser);
-		// console.log('hola');
 	}, []);
-	// console.log(user);
+
+	useEffect(() => {
+		!!user && router.replace('/home');
+	}, [user]);
 
 	const handleClick = () => {
 		try {
-			// const user = await loginGitHub();
-			// setUser(user);
-			loginGitHub().then((user) => {
-				setUser(user);
-			});
-			// console.log('holaara');
+			loginGitHub();
 		} catch (e) {
 			console.log(e);
 		}
 	};
 
-	// console.log('holaarafuera');
 	return (
 		<>
 			<Head>
@@ -51,9 +49,9 @@ const Home = () => {
 								Ingresa con GitHub
 							</Button>
 						)}
-						{user && user.avatar && (
+						{user === undefined && (
 							<div>
-								<Avatar alt={user.username} src={user.avatar} withText />
+								<p>loading...</p>
 							</div>
 						)}
 					</div>
