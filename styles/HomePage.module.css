@@ -3,7 +3,7 @@
 	border-bottom: 1px solid #ccc;
 	display: flex;
 	height: 49px;
-	position: fixed;
+	position: sticky;
 	top: 0;
 	width: 100%;
 }
@@ -13,7 +13,7 @@
 }
 
 .nav {
-	position: fixed;
+	position: sticky;
 	height: 49px;
 	bottom: 0;
 	border-top: 1px solid #ccc;
@@ -21,5 +21,5 @@
 }
 
 .section {
-	padding-top: 100px;
+	padding-top: 49px;
 }
