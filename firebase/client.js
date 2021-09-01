@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import { delBasePath } from 'next/dist/shared/lib/router/router';
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -13,13 +14,16 @@ const firebaseConfig = {
 
 !firebase.apps.length && firebase.initializeApp(firebaseConfig);
 
+const db = firebase.firestore();
+
 const mapUserAuth = (user) => {
-	const { displayName, email, photoURL } = user;
+	const { displayName, email, photoURL, uid } = user;
 
 	return {
 		avatar: photoURL,
 		username: displayName,
 		email,
+		uid,
 	};
 };
 
@@ -35,4 +39,16 @@ export const loginGitHub = () => {
 	// console.log('clik');
 	const githubProvider = new firebase.auth.GithubAuthProvider();
 	return firebase.auth().signInWithPopup(githubProvider);
+};
+
+export const addTwitt = ({ avatar, content, userId, username }) => {
+	return db.collection('twits').add({
+		avatar,
+		content,
+		userId,
+		username,
+		createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
+		likesCount: 0,
+		sharedCount: 0,
+	});
 };

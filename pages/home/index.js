@@ -5,16 +5,20 @@ import { AppLayout } from 'components/AppLayout';
 import Twitcooff from 'components/Twittcoff';
 
 import styles from 'styles/HomePage.module.css';
+import { useUser } from 'hooks/useUser';
 
 const HomePage = () => {
 	const [timeline, setTimeline] = useState([]);
-	console.log(timeline);
+	const user = useUser();
+
 	useEffect(async () => {
-		const { data } = await axios.get(
-			'http://localhost:3000/api/statuses/home_timeline'
-		);
-		setTimeline(data);
-	}, []);
+		if (user) {
+			const { data } = await axios.get(
+				'http://localhost:3000/api/statuses/home_timeline'
+			);
+			setTimeline(data);
+		}
+	}, [user]);
 
 	return (
 		<>

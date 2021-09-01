@@ -1,19 +1,47 @@
 import { useState } from 'react';
 
-const { AppLayout } = require('components/AppLayout');
-const { Button } = require('components/Button');
+import { AppLayout } from 'components/AppLayout';
+import { Button } from 'components/Button';
+import { useUser } from 'hooks/useUser';
+import { addTwitt } from 'firebase/client';
+import { useRouter } from 'next/router';
 
 const ComposeTweet = () => {
-	const [message, setMessage] = useState();
 	const user = useUser();
+	const [message, setMessage] = useState();
+	const router = useRouter();
+
+	const handleChange = (e) => {
+		const { value } = e.target;
+		console.log(value);
+		setMessage(value);
+	};
+
+	const handleSubmit = (e) => {
+		try {
+			e.preventDefault();
+			addTwitt({
+				avatar: user.avatar,
+				content: message,
+				userId: user.uid,
+				username: user.username,
+			});
+			router.push('/home');
+		} catch (e) {
+			console.log(e);
+		}
+	};
 
 	return (
 		<>
 			<AppLayout>
-				<form>
-					<textarea placeholder="¿Que esta pasando?"></textarea>
+				<form onSubmit={handleSubmit}>
+					<textarea
+						onChange={handleChange}
+						placeholder="¿Que esta pasando?"
+					></textarea>
 					<div>
-						<Button>Twittear</Button>
+						<Button disabled={!message}>Twittear</Button>
 					</div>
 				</form>
 			</AppLayout>
