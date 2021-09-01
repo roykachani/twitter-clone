@@ -1,5 +1,5 @@
 import { Avatar } from 'components/Avatar';
-const Twittcoff = ({ id, avatar, username, message }) => {
+const Twittcoff = ({ id, avatar, username, content, userId, createdAt }) => {
 	// console.log(id);
 	return (
 		<>
@@ -8,8 +8,11 @@ const Twittcoff = ({ id, avatar, username, message }) => {
 					<Avatar alt={username} src={avatar} />
 				</div>
 				<section>
-					<strong>{username}</strong>
-					<p>{message}</p>
+					<header>
+						<strong>{username}</strong>
+						<date>{createdAt}</date>
+					</header>
+					<p>{content}</p>
 				</section>
 			</article>
 			<style jsx>{`

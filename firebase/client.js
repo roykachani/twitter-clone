@@ -52,3 +52,26 @@ export const addTwitt = ({ avatar, content, userId, username }) => {
 		sharedCount: 0,
 	});
 };
+
+export const fetchLatestTwitts = async () => {
+	const { docs } = await db
+		.collection('twits')
+		.orderBy('createdAt', 'desc')
+		.get();
+	return docs.map((doc) => {
+		const data = doc.data();
+		console.log(data);
+		const id = doc.id;
+		console.log(id);
+		const { createdAt } = data;
+		//faltaria formatear bien la fecha
+
+		const normalizedCreatedAt = new Date(createdAt.seconds).toString();
+
+		return {
+			...data,
+			id,
+			createdAt: normalizedCreatedAt,
+		};
+	});
+};
