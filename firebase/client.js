@@ -60,18 +60,16 @@ export const fetchLatestTwitts = async () => {
 		.get();
 	return docs.map((doc) => {
 		const data = doc.data();
-		console.log(data);
 		const id = doc.id;
-		console.log(id);
 		const { createdAt } = data;
-		//faltaria formatear bien la fecha
 
-		const normalizedCreatedAt = new Date(createdAt.seconds).toString();
+		// const date = new Date(createdAt.seconds * 1000);
+		// const normalizedCreatedAt = new Intl.DateTimeFormat('es-Es').format(date);
 
 		return {
 			...data,
 			id,
-			createdAt: normalizedCreatedAt,
+			createdAt: +createdAt.toDate(), //operador unitario
 		};
 	});
 };

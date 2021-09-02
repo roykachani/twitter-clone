@@ -17,13 +17,6 @@ const HomePage = () => {
 			const timeline = await fetchLatestTwitts();
 			setTimeline(timeline);
 		}
-
-		// if (user) {
-		// 	const { data } = await axios.get(
-		// 		'http://localhost:3000/api/statuses/home_timeline'
-		// 	);
-		// 	setTimeline(data);
-		// }
 	}, [user]);
 
 	return (

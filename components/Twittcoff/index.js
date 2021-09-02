@@ -1,6 +1,9 @@
 import { Avatar } from 'components/Avatar';
+import { useTimeAgo } from 'hooks/useTimeAgo';
+
 const Twittcoff = ({ id, avatar, username, content, userId, createdAt }) => {
-	// console.log(id);
+	const timeago = useTimeAgo(createdAt);
+
 	return (
 		<>
 			<article key={id}>
@@ -10,7 +13,8 @@ const Twittcoff = ({ id, avatar, username, content, userId, createdAt }) => {
 				<section>
 					<header>
 						<strong>{username}</strong>
-						<date>{createdAt}</date>
+						<span> · </span>
+						<date>{timeago}</date>
 					</header>
 					<p>{content}</p>
 				</section>
@@ -27,6 +31,10 @@ const Twittcoff = ({ id, avatar, username, content, userId, createdAt }) => {
 				p {
 					margin: 0;
 					line-height: 1.31;
+				}
+				date {
+					color: #555;
+					font-size: 14px;
 				}
 			`}</style>
 		</>
