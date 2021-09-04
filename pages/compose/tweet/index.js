@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 import { AppLayout } from 'components/AppLayout';
 import { Button } from 'components/Button';
 import { useUser } from 'hooks/useUser';
 import { addTwitt } from 'firebase/client';
-import { useRouter } from 'next/router';
 
 const COMPOSE_STATES = {
 	USER_NOT_KNOWN: 0,
@@ -48,6 +49,10 @@ const ComposeTweet = () => {
 	return (
 		<>
 			<AppLayout>
+				<Head>
+					<title>Crear un Twit / TwittCoff</title>
+					<meta name="description" content="Crea tu twittCoff" />
+				</Head>
 				<form onSubmit={handleSubmit}>
 					<textarea
 						onChange={handleChange}

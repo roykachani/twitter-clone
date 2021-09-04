@@ -10,6 +10,7 @@ import styles from 'styles/HomePage.module.css';
 import { CreateIcon } from 'components/Icons/Create';
 import { HomeIcon } from 'components/Icons/Home';
 import { SearchIcon } from 'components/Icons/Search';
+import Head from 'next/head';
 
 const HomePage = () => {
 	const [timeline, setTimeline] = useState([]);
@@ -25,6 +26,10 @@ const HomePage = () => {
 	return (
 		<>
 			<AppLayout>
+				<Head>
+					<title>Inicio / TwittCoff</title>
+					<meta name="description" content="Inicio TwittCoff" />
+				</Head>
 				<header className={styles.header}>
 					<h2>Inicio</h2>
 				</header>
@@ -48,7 +53,7 @@ const HomePage = () => {
 							<HomeIcon width={32} height={32} />
 						</a>
 					</Link>
-					<Link href="/compose/tweet">
+					<Link href="/search">
 						<a className={styles.anchor}>
 							<SearchIcon width={32} height={32} />
 						</a>

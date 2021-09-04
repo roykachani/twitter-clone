@@ -25,7 +25,7 @@
 	width: 100%;
 }
 
-.nav .anchor {
+nav .anchor {
 	align-items: center;
 	display: flex;
 	flex: 1 1 auto;
@@ -36,12 +36,12 @@
 	color: #09f;
 }
 
-/* .anchor:hover {
-	text-decoration: none;
+nav .anchor:hover {
+	background: radial-gradient(#0099ff22 15%, transparent 16%);
+	background-size: 180px 180px;
+	background-position: center;
 }
-.anchor:visited {
-	text-decoration: none;
-} */
+
 .section {
 	flex: 1;
 }
