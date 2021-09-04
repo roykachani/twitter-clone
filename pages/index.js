@@ -5,7 +5,7 @@ import { loginGitHub } from '../firebase/client';
 
 import { AppLayout } from 'components/AppLayout';
 import { Button } from 'components/Button';
-import { GitHub } from 'components/Icons/GitHub';
+import { GitHubIcon } from 'components/Icons/GitHub';
 import { colors } from 'styles/theme';
 import { useRouter } from 'next/router';
 import { useUser, USER_STATES } from 'hooks/useUser';
@@ -41,7 +41,7 @@ const Home = () => {
 					<div>
 						{user === USER_STATES.NOT_LOGGED && (
 							<Button onClick={handleClick}>
-								<GitHub fill="#fff" width={24} height={24} />
+								<GitHubIcon fill="#fff" width={24} height={24} />
 								Ingresa con GitHub
 							</Button>
 						)}

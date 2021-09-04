@@ -1,5 +1,5 @@
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 
 import { AppLayout } from 'components/AppLayout';
 import Twitcooff from 'components/Twittcoff';
@@ -7,6 +7,9 @@ import { useUser } from 'hooks/useUser';
 import { fetchLatestTwitts } from 'firebase/client';
 
 import styles from 'styles/HomePage.module.css';
+import { CreateIcon } from 'components/Icons/Create';
+import { HomeIcon } from 'components/Icons/Home';
+import { SearchIcon } from 'components/Icons/Search';
 
 const HomePage = () => {
 	const [timeline, setTimeline] = useState([]);
@@ -39,7 +42,23 @@ const HomePage = () => {
 						)
 					)}
 				</section>
-				<nav className={styles.nav}></nav>
+				<nav className={styles.nav}>
+					<Link href="/home">
+						<a className={styles.anchor}>
+							<HomeIcon width={32} height={32} />
+						</a>
+					</Link>
+					<Link href="/compose/tweet">
+						<a className={styles.anchor}>
+							<SearchIcon width={32} height={32} />
+						</a>
+					</Link>
+					<Link href="/compose/tweet">
+						<a className={styles.anchor}>
+							<CreateIcon width={32} height={32} />
+						</a>
+					</Link>
+				</nav>
 			</AppLayout>
 		</>
 	);

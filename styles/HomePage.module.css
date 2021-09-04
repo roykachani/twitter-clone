@@ -19,11 +19,29 @@
 	background: #fff;
 	position: sticky;
 	height: 49px;
+	display: flex;
 	bottom: 0;
 	border-top: 1px solid #eee;
 	width: 100%;
 }
 
-/* .section {
-	padding-top: 49px;
+.nav .anchor {
+	align-items: center;
+	display: flex;
+	flex: 1 1 auto;
+	height: 100%;
+	justify-content: center;
+	text-decoration: none;
+	outline: none;
+	color: #09f;
+}
+
+/* .anchor:hover {
+	text-decoration: none;
+}
+.anchor:visited {
+	text-decoration: none;
 } */
+.section {
+	flex: 1;
+}

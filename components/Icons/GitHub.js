@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export const GitHub = (props) => {
+export const GitHubIcon = (props) => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
