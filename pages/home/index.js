@@ -35,12 +35,13 @@ const HomePage = () => {
 				</header>
 				<section className={styles.section}>
 					{timeline.map(
-						({ id, username, avatar, content, userId, createdAt }) => (
+						({ id, username, avatar, content, img, userId, createdAt }) => (
 							<Twitcooff
 								key={id}
 								username={username}
 								avatar={avatar}
 								content={content}
+								img={img}
 								userId={userId}
 								createdAt={createdAt}
 							/>

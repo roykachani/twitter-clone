@@ -1,7 +1,15 @@
 import { Avatar } from 'components/Avatar';
 import { useTimeAgo } from 'hooks/useTimeAgo';
 
-const Twittcoff = ({ id, avatar, username, content, userId, createdAt }) => {
+const Twittcoff = ({
+	id,
+	avatar,
+	username,
+	content,
+	img,
+	userId,
+	createdAt,
+}) => {
 	const timeago = useTimeAgo(createdAt);
 
 	return (
@@ -14,9 +22,10 @@ const Twittcoff = ({ id, avatar, username, content, userId, createdAt }) => {
 					<header>
 						<strong>{username}</strong>
 						<span> · </span>
-						<date>{timeago}</date>
+						<span className="date">{timeago}</span>
 					</header>
 					<p>{content}</p>
+					{!!img && <img src={img} />}
 				</section>
 			</article>
 			<style jsx>{`
@@ -32,7 +41,13 @@ const Twittcoff = ({ id, avatar, username, content, userId, createdAt }) => {
 					margin: 0;
 					line-height: 1.31;
 				}
-				date {
+				img {
+					border-radius: 10px;
+					height: auto;
+					margin-top: 10px;
+					width: 100%;
+				}
+				.date {
 					color: #555;
 					font-size: 14px;
 				}

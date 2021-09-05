@@ -1,5 +1,4 @@
 import firebase from 'firebase';
-import { delBasePath } from 'next/dist/shared/lib/router/router';
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -41,10 +40,11 @@ export const loginGitHub = () => {
 	return firebase.auth().signInWithPopup(githubProvider);
 };
 
-export const addTwitt = ({ avatar, content, userId, username }) => {
+export const addTwitt = ({ avatar, content, img, userId, username }) => {
 	return db.collection('twits').add({
 		avatar,
 		content,
+		img,
 		userId,
 		username,
 		createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
@@ -72,4 +72,10 @@ export const fetchLatestTwitts = async () => {
 			createdAt: +createdAt.toDate(), //operador unitario
 		};
 	});
+};
+
+export const upLoadImage = (file) => {
+	const ref = firebase.storage().ref(`images/${file.name}`);
+	const task = ref.put(file);
+	return task;
 };
