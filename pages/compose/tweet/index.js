@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import { AppLayout } from 'components/AppLayout';
 import { Button } from 'components/Button';
 import { useUser } from 'hooks/useUser';
 import { addTwitt, upLoadImage } from 'firebase/client';
@@ -96,35 +95,34 @@ const ComposeTweet = () => {
 
 	return (
 		<>
-			<AppLayout>
-				<Head>
-					<title>Crear un Twit / TwittCoff</title>
-					<meta name="description" content="Crea tu twittCoff" />
-				</Head>
-				<section className="form-container">
-					<section className="avatar-container">
-						{!!user && <Avatar alt={user.avatar} src={user.avatar} />}{' '}
-					</section>
-					<form onSubmit={handleSubmit}>
-						<textarea
-							onChange={handleChange}
-							onDragEnter={handleDragEnter}
-							onDragLeave={handleDragLeave}
-							onDrop={handleDrop}
-							placeholder="¿Que esta pasando?"
-						></textarea>
-						{!!imgURL && (
-							<section className="remove-img">
-								<button onClick={() => setImageURL(null)}>X</button>
-								<img src={imgURL} />
-							</section>
-						)}
-						<div>
-							<Button disabled={isButtonDisabled}>Twittear</Button>
-						</div>
-					</form>
+			<Head>
+				<title>Crear un Twit / TwittCoff</title>
+				<meta name="description" content="Crea tu twittCoff" />
+			</Head>
+			<section className="form-container">
+				<section className="avatar-container">
+					{!!user && <Avatar alt={user.avatar} src={user.avatar} />}{' '}
 				</section>
-			</AppLayout>
+				<form onSubmit={handleSubmit}>
+					<textarea
+						onChange={handleChange}
+						onDragEnter={handleDragEnter}
+						onDragLeave={handleDragLeave}
+						onDrop={handleDrop}
+						placeholder="¿Que esta pasando?"
+					></textarea>
+					{!!imgURL && (
+						<section className="remove-img">
+							<button onClick={() => setImageURL(null)}>X</button>
+							<img src={imgURL} />
+						</section>
+					)}
+					<div>
+						<Button disabled={isButtonDisabled}>Twittear</Button>
+					</div>
+				</form>
+			</section>
+
 			<style jsx>{`
 				div {
 					padding: 15px;

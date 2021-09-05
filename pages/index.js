@@ -3,7 +3,6 @@ import { memo, useEffect, useState } from 'react';
 
 import { loginGitHub } from '../firebase/client';
 
-import { AppLayout } from 'components/AppLayout';
 import { Button } from 'components/Button';
 import { GitHubIcon } from 'components/Icons/GitHub';
 import { colors } from 'styles/theme';
@@ -33,26 +32,26 @@ const Home = () => {
 				<meta name="description" content="twitterev for devs" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<AppLayout>
-				<section>
-					<img src="/logo.png" alt="logo" />
-					<h1>TwittCoff</h1>
-					<h2>Habla con desarrolladores sobre desarrollo</h2>
-					<div>
-						{user === USER_STATES.NOT_LOGGED && (
-							<Button onClick={handleClick}>
-								<GitHubIcon fill="#fff" width={24} height={24} />
-								Ingresa con GitHub
-							</Button>
-						)}
-						{user === USER_STATES.NOT_KNOWN && (
-							<div>
-								<p>loading...</p>
-							</div>
-						)}
-					</div>
-				</section>
-			</AppLayout>
+
+			<section>
+				<img src="/logo.png" alt="logo" />
+				<h1>TwittCoff</h1>
+				<h2>Habla con desarrolladores sobre desarrollo</h2>
+				<div>
+					{user === USER_STATES.NOT_LOGGED && (
+						<Button onClick={handleClick}>
+							<GitHubIcon fill="#fff" width={24} height={24} />
+							Ingresa con GitHub
+						</Button>
+					)}
+					{user === USER_STATES.NOT_KNOWN && (
+						<div>
+							<p>loading...</p>
+						</div>
+					)}
+				</div>
+			</section>
+
 			<style jsx>
 				{`
 					img {

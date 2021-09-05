@@ -22,7 +22,7 @@ const Twittcoff = ({
 					<header>
 						<strong>{username}</strong>
 						<span> · </span>
-						<span className="date">{timeago}</span>
+						<time>{timeago}</time>
 					</header>
 					<p>{content}</p>
 					{!!img && <img src={img} />}
@@ -47,7 +47,7 @@ const Twittcoff = ({
 					margin-top: 10px;
 					width: 100%;
 				}
-				.date {
+				time {
 					color: #555;
 					font-size: 14px;
 				}

@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-import { AppLayout } from 'components/AppLayout';
 import Twitcooff from 'components/Twittcoff';
 import { useUser } from 'hooks/useUser';
 import { fetchLatestTwitts } from 'firebase/client';
@@ -25,47 +24,45 @@ const HomePage = () => {
 
 	return (
 		<>
-			<AppLayout>
-				<Head>
-					<title>Inicio / TwittCoff</title>
-					<meta name="description" content="Inicio TwittCoff" />
-				</Head>
-				<header className={styles.header}>
-					<h2>Inicio</h2>
-				</header>
-				<section className={styles.section}>
-					{timeline.map(
-						({ id, username, avatar, content, img, userId, createdAt }) => (
-							<Twitcooff
-								key={id}
-								username={username}
-								avatar={avatar}
-								content={content}
-								img={img}
-								userId={userId}
-								createdAt={createdAt}
-							/>
-						)
-					)}
-				</section>
-				<nav className={styles.nav}>
-					<Link href="/home">
-						<a className={styles.anchor}>
-							<HomeIcon width={32} height={32} />
-						</a>
-					</Link>
-					<Link href="/search">
-						<a className={styles.anchor}>
-							<SearchIcon width={32} height={32} />
-						</a>
-					</Link>
-					<Link href="/compose/tweet">
-						<a className={styles.anchor}>
-							<CreateIcon width={32} height={32} />
-						</a>
-					</Link>
-				</nav>
-			</AppLayout>
+			<Head>
+				<title>Inicio / TwittCoff</title>
+				<meta name="description" content="Inicio TwittCoff" />
+			</Head>
+			<header className={styles.header}>
+				<h2>Inicio</h2>
+			</header>
+			<section className={styles.section}>
+				{timeline.map(
+					({ id, username, avatar, content, img, userId, createdAt }) => (
+						<Twitcooff
+							key={id}
+							username={username}
+							avatar={avatar}
+							content={content}
+							img={img}
+							userId={userId}
+							createdAt={createdAt}
+						/>
+					)
+				)}
+			</section>
+			<nav className={styles.nav}>
+				<Link href="/home">
+					<a className={styles.anchor}>
+						<HomeIcon width={32} height={32} />
+					</a>
+				</Link>
+				<Link href="/search">
+					<a className={styles.anchor}>
+						<SearchIcon width={32} height={32} />
+					</a>
+				</Link>
+				<Link href="/compose/tweet">
+					<a className={styles.anchor}>
+						<CreateIcon width={32} height={32} />
+					</a>
+				</Link>
+			</nav>
 		</>
 	);
 };
