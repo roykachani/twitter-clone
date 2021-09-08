@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import Twitcooff from 'components/Twittcoff';
 import { useUser } from 'hooks/useUser';
-import { fetchLatestTwitts } from 'firebase/client';
+import { listenlatestTwitts } from 'firebase/client';
 
 import { CreateIcon } from 'components/Icons/Create';
 import { HomeIcon } from 'components/Icons/Home';
@@ -15,11 +15,15 @@ const HomePage = () => {
 	const [timeline, setTimeline] = useState([]);
 	const user = useUser();
 
-	useEffect(async () => {
+	useEffect(() => {
+		let unSuscribe;
+
 		if (user) {
-			const timeline = await fetchLatestTwitts();
-			setTimeline(timeline);
+			unSuscribe = listenlatestTwitts((newTweets) => {
+				setTimeline(newTweets);
+			});
 		}
+		return () => unSuscribe && unSuscribe();
 	}, [user]);
 
 	return (

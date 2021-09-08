@@ -1,11 +1,11 @@
 import * as admin from 'firebase-admin';
 
-const serviceAccount = require('./firebase-keys.json');
+const serviceAccount = require(process.env.FIREBASE_KEYS);
 
 try {
 	admin.initializeApp({
 		credential: admin.credential.cert(serviceAccount),
-		databaseURL: 'https://twittcoff-default-rtdb.firebaseio.com',
+		databaseURL: process.env.FIREBASE_DATA_BASE,
 	});
 } catch (e) {
 	console.log(e);

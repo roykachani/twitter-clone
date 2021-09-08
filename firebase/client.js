@@ -52,26 +52,27 @@ export const addTwitt = ({ avatar, content, img, userId, username }) => {
 		sharedCount: 0,
 	});
 };
+const mapTeewtFromFirebaseToObjet = (doc) => {
+	const data = doc.data();
+	const id = doc.id;
+	const { createdAt } = data;
 
-export const fetchLatestTwitts = async () => {
-	const { docs } = await db
+	return {
+		...data,
+		id,
+		createdAt: +createdAt.toDate(), //operador unitario
+	};
+};
+
+export const listenlatestTwitts = (callback) => {
+	return db
 		.collection('twits')
 		.orderBy('createdAt', 'desc')
-		.get();
-	return docs.map((doc) => {
-		const data = doc.data();
-		const id = doc.id;
-		const { createdAt } = data;
-
-		// const date = new Date(createdAt.seconds * 1000);
-		// const normalizedCreatedAt = new Intl.DateTimeFormat('es-Es').format(date);
-
-		return {
-			...data,
-			id,
-			createdAt: +createdAt.toDate(), //operador unitario
-		};
-	});
+		.limit(25)
+		.onSnapshot(({ docs }) => {
+			const newTweets = docs.map(mapTeewtFromFirebaseToObjet);
+			callback(newTweets);
+		});
 };
 
 export const upLoadImage = (file) => {
