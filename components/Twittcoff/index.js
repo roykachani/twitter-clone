@@ -1,3 +1,6 @@
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+
 import { Avatar } from 'components/Avatar';
 import { useTimeAgo } from 'hooks/useTimeAgo';
 
@@ -11,10 +14,16 @@ const Twittcoff = ({
 	createdAt,
 }) => {
 	const timeago = useTimeAgo(createdAt);
+	const router = useRouter();
+
+	const handleArticle = (e) => {
+		e.preventDefault();
+		router.push(`/status/${id}`);
+	};
 
 	return (
 		<>
-			<article key={id}>
+			<article key={id} onClick={handleArticle}>
 				<div>
 					<Avatar alt={username} src={avatar} />
 				</div>
@@ -22,7 +31,11 @@ const Twittcoff = ({
 					<header>
 						<strong>{username}</strong>
 						<span> · </span>
-						<time>{timeago}</time>
+						<Link href={`/status/${id}`}>
+							<a>
+								<time>{timeago}</time>
+							</a>
+						</Link>
 					</header>
 					<p>{content}</p>
 					{!!img && <img src={img} />}
@@ -34,6 +47,11 @@ const Twittcoff = ({
 					display: flex;
 					padding: 10px 15px;
 				}
+				article:hover {
+					background: #f5f5f5;
+					cursor: pointer;
+				}
+
 				div {
 					padding-right: 8px;
 				}
@@ -47,9 +65,14 @@ const Twittcoff = ({
 					margin-top: 10px;
 					width: 100%;
 				}
-				time {
+				a {
 					color: #555;
 					font-size: 14px;
+					text-decoration: none;
+				}
+
+				a:hover {
+					text-decoration: underline;
 				}
 			`}</style>
 		</>

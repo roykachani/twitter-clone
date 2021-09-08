@@ -5,11 +5,11 @@ import Twitcooff from 'components/Twittcoff';
 import { useUser } from 'hooks/useUser';
 import { fetchLatestTwitts } from 'firebase/client';
 
-import styles from 'styles/HomePage.module.css';
 import { CreateIcon } from 'components/Icons/Create';
 import { HomeIcon } from 'components/Icons/Home';
 import { SearchIcon } from 'components/Icons/Search';
 import Head from 'next/head';
+import styles from 'styles/HomePage.module.css';
 
 const HomePage = () => {
 	const [timeline, setTimeline] = useState([]);
@@ -36,6 +36,7 @@ const HomePage = () => {
 					({ id, username, avatar, content, img, userId, createdAt }) => (
 						<Twitcooff
 							key={id}
+							id={id}
 							username={username}
 							avatar={avatar}
 							content={content}
