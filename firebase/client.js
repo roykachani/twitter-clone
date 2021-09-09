@@ -29,13 +29,11 @@ const mapUserAuth = (user) => {
 export const onAuthStateChanged = (onChange) => {
 	return firebase.auth().onAuthStateChanged((user) => {
 		const normalizeUser = user ? mapUserAuth(user) : null;
-		// console.log('efect');
 		onChange(normalizeUser);
 	});
 };
 
 export const loginGitHub = () => {
-	// console.log('clik');
 	const githubProvider = new firebase.auth.GithubAuthProvider();
 	return firebase.auth().signInWithPopup(githubProvider);
 };

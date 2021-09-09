@@ -38,7 +38,6 @@ const ComposeTweet = () => {
 			const onProgress = () => {};
 			const onError = () => {};
 			const onComplete = () => {
-				console.log('onComplete');
 				task.snapshot.ref.getDownloadURL().then(setImageURL);
 			};
 			task.on('state_changed', onProgress, onError, onComplete);
@@ -48,7 +47,6 @@ const ComposeTweet = () => {
 	//TextArea
 	const handleChange = (e) => {
 		const { value } = e.target;
-		console.log(value);
 		setMessage(value);
 	};
 
@@ -90,7 +88,6 @@ const ComposeTweet = () => {
 		const task = upLoadImage(file);
 		setTask(task);
 	};
-	//video 1:14
 	const isButtonDisabled = !message || status === COMPOSE_STATES.LOADING;
 
 	return (
