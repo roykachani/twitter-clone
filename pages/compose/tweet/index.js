@@ -152,6 +152,7 @@ const ComposeTweet = () => {
 				}
 				form {
 					padding: 10px;
+					width: 100%;
 				}
 				textarea {
 					border: ${drag === DRAG_IMAGE_STATES.DRAG_OVER

@@ -4,8 +4,10 @@ export default async (req, res) => {
 	try {
 		const { query } = req;
 		const { id } = query;
+		console.log(id);
 
 		const doc = await firestore.collection('twits').doc(id).get();
+		console.log(doc);
 		const data = doc.data();
 		const { createdAt } = data;
 

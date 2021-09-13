@@ -41,8 +41,8 @@ const HomePage = () => {
 						<Twitcooff
 							key={id}
 							id={id}
-							username={username}
 							avatar={avatar}
+							username={username}
 							content={content}
 							img={img}
 							userId={userId}

@@ -18,7 +18,7 @@ const Twittcoff = ({
 
 	const handleArticle = (e) => {
 		e.preventDefault();
-		router.push(`/status/${id}`);
+		router.push(`/${username}/status/${id}`);
 	};
 
 	return (
@@ -31,7 +31,7 @@ const Twittcoff = ({
 					<header>
 						<strong>{username}</strong>
 						<span> · </span>
-						<Link href={`/status/${id}`}>
+						<Link href={`/${username}/status/${id}`}>
 							<a>
 								<time>{timeago}</time>
 							</a>
